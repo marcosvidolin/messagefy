@@ -1,5 +1,10 @@
 apply plugin: 'java'
 
+jar {
+    baseName = 'messagefy'
+    version = 'v1.0.0'
+}
+
 repositories {
     jcenter()
 }
