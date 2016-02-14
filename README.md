@@ -2,6 +2,8 @@
 
 This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).
 
+# Download
+[Messagefy v1.0.0](https://github.com/marcosvidolin/messagefy/releases/download/v1.0.0/messagefy-v1.0.0.jar)
 
 # Getting started
 
