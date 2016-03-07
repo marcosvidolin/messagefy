@@ -1,9 +1,17 @@
+plugins {
+    id "com.jfrog.bintray" version "1.6"
+}
+
 apply plugin: 'java'
+apply plugin: 'maven-publish'
 
 jar {
     baseName = 'messagefy'
     version = 'v1.0.0'
 }
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 repositories {
     jcenter()
@@ -13,4 +21,39 @@ dependencies {
     compile 'javax.mail:javax.mail-api:1.5.5'
     compile 'org.slf4j:slf4j-api:1.7.12'
     testCompile 'junit:junit:4.12'
+}
+
+publishing {
+    publications {
+        MessagefyPublication(MavenPublication) {
+            from components.java
+            groupId 'com.vidolima'
+            artifactId 'messagefy'
+            version '1.0.0'
+        }
+    }
+}
+
+bintray {
+
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MessagefyPublication'] 
+
+    pkg {
+        repo = 'maven'
+        name = 'messagefy'
+        desc = 'This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).'
+        websiteUrl = 'https://github.com/marcosvidolin/messagefy'
+        issueTrackerUrl = 'https://github.com/marcosvidolin/messagefy/issues'
+        vcsUrl = 'https://github.com/marcosvidolin/messagefy.git'
+        licenses = ['MIT']
+        labels = ['java', 'JavaMail', 'MimeMessage', 'Library', 'Message']
+
+        version {
+            name = '1.0.0'
+            released  = new Date()
+            vcsTag = '1.0.0'
+        }
+    }
 }

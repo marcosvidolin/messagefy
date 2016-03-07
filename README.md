@@ -2,8 +2,24 @@
 
 This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).
 
-# Download
-[Messagefy v1.0.0](https://github.com/marcosvidolin/messagefy/releases/download/v1.0.0/messagefy-v1.0.0.jar)
+To add a dependency on Messagefy using Maven, use the following:
+
+```xml
+<dependency>
+  <groupId>com.vidolima</groupId>
+  <artifactId>messagefy</artifactId>
+  <version>1.0.0</version>
+  <type>jar</type>
+</dependency>
+```
+
+To add a dependency using Gradle:
+```
+dependencies {
+  compile 'com.vidolima:messagefy:1.0.0'
+}
+```
+
 
 # Getting started
 
