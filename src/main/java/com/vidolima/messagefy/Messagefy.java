@@ -1,12 +1,12 @@
 package com.vidolima.messagefy;
 
+import com.vidolima.messagefy.util.EmailUtil;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.mail.Address;
@@ -28,7 +28,7 @@ import javax.mail.util.ByteArrayDataSource;
  * <pre>
  * <code>
  * Messagefy messagefy = new Messagefy.Builder()
- * 		.sender("sender@sender.com").to("vidolima@vidolima.com")
+ * 		.from("sender@sender.com").to("vidolima@vidolima.com")
  * 		.subject("Messagefy")
  * 		.content("Hello Messagefy!")
  * 		.build();
@@ -70,7 +70,7 @@ public class Messagefy {
 
 		// just converts the object type of the List to avoid
 		// ArrayStoreException
-		List<Address> address = new ArrayList<Address>();
+		List<Address> address = new ArrayList<>();
 		for (String to : this.toList) {
 			address.add(new InternetAddress(to));
 		}
@@ -88,7 +88,7 @@ public class Messagefy {
 
 		// just converts the object type of the List to avoid
 		// ArrayStoreException
-		Collection<Address> address = new ArrayList<Address>();
+		Collection<Address> address = new ArrayList<>();
 		for (String cc : this.ccList) {
 			address.add(new InternetAddress(cc));
 		}
@@ -221,9 +221,29 @@ public class Messagefy {
 	}
 
 	/**
+	 * Checks whether the required attributes are filled or valid.
+	 *
+	 * @param builder
+	 */
+	private void check(Builder builder) {
+		if (builder.sender == null || builder.sender.isEmpty()) {
+			throw new IllegalArgumentException("You must inform a sender ('from' attribute).");
+		}
+		if (builder.toList == null || builder.toList.isEmpty()) {
+			throw new IllegalArgumentException("You must inform at least a recipient ('to' attribute).");
+		}
+		EmailUtil.isValid(builder.sender);
+		EmailUtil.isValid(builder.toList);
+		if (!builder.ccList.isEmpty()) {
+			EmailUtil.isValid(builder.ccList);
+		}
+	}
+
+	/**
 	 * Private constructor to avoid instantiation.
 	 */
 	private Messagefy(Builder builder) {
+		this.check(builder);
 		this.sender = builder.sender;
 		this.senderName = builder.senderName;
 		this.toList = builder.toList;
@@ -242,17 +262,17 @@ public class Messagefy {
 	 */
 	public static class Builder {
 
-		private String sender;
-		private String senderName;
+		private String sender = "";
+		private String senderName = "";
 		private Collection<String> toList;
 		private Collection<String> ccList;
-		private String content;
-		private String contentType;
-		private String subject;
-		private String subjectCharset;
+		private String content = "";
+		private String contentType = "";
+		private String subject = "";
+		private String subjectCharset = "";
 		private byte[] attachment;
-		private String attachmentName;
-		private String attachmentMimeType;
+		private String attachmentName = "";
+		private String attachmentMimeType = "";
 
 		public Builder from(final String sender) {
 			this.sender = sender;
@@ -265,15 +285,17 @@ public class Messagefy {
 		}
 
 		public Builder to(final String to) {
-			if (toList == null)
-				this.toList = new ArrayList<String>();
+			if (toList == null) {
+				this.toList = new ArrayList<>();
+			}
 			this.toList.add(to);
 			return this;
 		}
 
 		public Builder cc(final String cc) {
-			if (ccList == null)
-				this.ccList = new ArrayList<String>();
+			if (ccList == null) {
+				this.ccList = new ArrayList<>();
+			}
 			this.ccList.add(cc);
 			return this;
 		}
