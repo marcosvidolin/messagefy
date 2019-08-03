@@ -1,5 +1,8 @@
 # Messagefy
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/79d4d0cf623e4d34ae92b39becfd231c)](https://www.codacy.com/app/marcosvidolin/messagefy?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcosvidolin/messagefy&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/marcosvidolin/messagefy.svg?branch=master)](https://travis-ci.org/marcosvidolin/messagefy)
+
 This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).
 
 To add a dependency on Messagefy using Maven, use the following:
