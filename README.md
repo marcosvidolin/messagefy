@@ -11,7 +11,7 @@ To add a dependency on Messagefy using Maven, use the following:
 <dependency>
   <groupId>com.vidolima</groupId>
   <artifactId>messagefy</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.1</version>
   <type>jar</type>
 </dependency>
 ```
@@ -19,7 +19,7 @@ To add a dependency on Messagefy using Maven, use the following:
 To add a dependency using Gradle:
 ```
 dependencies {
-  compile 'com.vidolima:messagefy:1.0.0'
+  compile 'com.vidolima:messagefy:1.1.1'
 }
 ```
 

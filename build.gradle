@@ -2,7 +2,7 @@ buildscript {
     ext.projectName = 'messagefy'
     ext.projectGroup = 'com.vidolima'
     ext.projectArtifact = 'messagefy'
-    ext.projectVersion = 'v1.1.1'
+    ext.projectVersion = '1.1.1'
 
     repositories {
         mavenCentral()
@@ -51,7 +51,7 @@ bintray {
         licenses = ['MIT']
         labels = ['java', 'JavaMail', 'MimeMessage', 'Library', 'Message']
         version {
-            name = projectVersion
+            name = 'v'+projectVersion
             released  = new Date()
             vcsTag = projectVersion
             gpg {
