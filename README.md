@@ -1,4 +1,4 @@
-#Messagefy#
+# Messagefy
 
 This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).
 
@@ -21,7 +21,7 @@ dependencies {
 ```
 
 
-# Getting started
+## Getting started
 
 Example:
 
@@ -36,7 +36,7 @@ Example:
 javaMailSender.send(messagefy.getMailMessage());
 ```
 
-# More Options
+## More Options
 
 | Attribute           | Type                 | Description |
 | :-------------------| :------------------- | :---------- |
@@ -52,9 +52,9 @@ javaMailSender.send(messagefy.getMailMessage());
 | toList              | Collection<String>   | List of "To" (primary) recipients. |
 
 
-# TODO
+## TODO
 * Multiples attachments
 * Tests
 
-# License
+## License
 Messagefy is released under the terms of the [MIT License](http://opensource.org/licenses/MIT).
