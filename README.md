@@ -52,9 +52,5 @@ javaMailSender.send(messagefy.getMailMessage());
 | toList              | Collection<String>   | List of "To" (primary) recipients. |
 
 
-## TODO
-* Multiples attachments
-* Tests
-
 ## License
 Messagefy is released under the terms of the [MIT License](http://opensource.org/licenses/MIT).
