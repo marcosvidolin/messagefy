@@ -2,7 +2,7 @@ buildscript {
     ext.projectName = 'messagefy'
     ext.projectGroup = 'com.vidolima'
     ext.projectArtifact = 'messagefy'
-    ext.projectVersion = 'v1.0.0'
+    ext.projectVersion = 'v1.1.1'
 
     repositories {
         mavenCentral()
