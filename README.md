@@ -30,7 +30,7 @@ Example:
 
 ```java
  Messagefy messagefy = new Messagefy.Builder()
-       .sender("sender@sender.com")
+       .from("sender@sender.com")
        .to("vidolima@vidolima.com")
        .subject("Messagefy")
        .content("Hello Messagefy!")
