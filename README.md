@@ -49,7 +49,7 @@ javaMailSender.send(messagefy.getMailMessage());
 | ccList              | Collection<String>   | List of "Cc" (carbon copy) recipients. |
 | content             | String               | The Message's content to a Multipart object. |
 | contentType         | String               | The Message's Content Type. Default content type is "text/html". |
-| sender              | String               | The sender e-mail. |
+| from                | String               | The sender e-mail. |
 | senderName          | String               | The sender name. |
 | subject             | String               | The Message's subject. |
 | toList              | Collection<String>   | List of "To" (primary) recipients. |
