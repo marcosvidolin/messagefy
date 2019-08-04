@@ -13,67 +13,17 @@ buildscript {
 plugins {
     id "com.jfrog.bintray" version "1.7"
 }
+
 group projectGroup
 version projectVersion
 
-allprojects {
-    apply plugin: 'java'
-    apply plugin: 'maven'
-    apply plugin: 'maven-publish'
-}
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply from: 'gradle/plugins/publisher.gradle'
 
 repositories {
     mavenCentral()
-}
-
-publishing {
-    publications {
-        publish(MavenPublication) {
-            from components.java
-            groupId projectGroup
-            artifactId projectArtifact
-            version projectVersion
-        }
-    }
-}
-
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRY_API_KEY')
-    configurations = ['archives']
-    pkg {
-        repo = 'maven'
-        name = projectName
-        desc = 'This is a very small helper java library to easily build a JavaMail MIME object (javax.mail.internet.MimeMessage).'
-        websiteUrl = 'https://github.com/marcosvidolin/messagefy'
-        issueTrackerUrl = 'https://github.com/marcosvidolin/messagefy/issues'
-        vcsUrl = 'https://github.com/marcosvidolin/messagefy.git'
-        licenses = ['MIT']
-        labels = ['java', 'JavaMail', 'MimeMessage', 'Library', 'Message']
-        version {
-            name = 'v'+projectVersion
-            released  = new Date()
-            vcsTag = projectVersion
-            gpg {
-                sign = true
-            }
-        }
-    }
-}
-
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
-    archives javadocJar
 }
 
 dependencies {
