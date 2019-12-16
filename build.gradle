@@ -28,6 +28,6 @@ repositories {
 
 dependencies {
     compile 'javax.mail:javax.mail-api:1.6.2'
-    compile 'org.slf4j:slf4j-api:1.7.29'
+    compile 'org.slf4j:slf4j-api:1.7.30'
     testCompile 'junit:junit:4.12'
 }
